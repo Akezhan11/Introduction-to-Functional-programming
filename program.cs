@@ -97,7 +97,7 @@ class Program
         Console.WriteLine($"Valid count: {validCount}");
         Console.WriteLine($"Rejected count: {rejectedCount}");
         Console.WriteLine($"Passed count: {passedCount}");
-        Console.WriteLine($"Average: {average}");
+        DisplayAverage(average);
 
         Console.WriteLine();
         Console.WriteLine($"85 as fraction: {ScoreToFraction(85)}");
@@ -131,57 +131,45 @@ class Program
         {
             case >= 90:
                 return "Excellent";
-
             case >= 70:
                 return "Good";
-
             case int s when s >= passThreshold:
                 return "Satisfactory";
-
             default:
                 return "Fail";
         }
     }
-
-
     // TASK 3
     static decimal ToDecimal(int value)
     {
         return (decimal)value;
     }
-
-
     static decimal CalculateAverage(int sum, int count)
     {
         if (count == 0)
         {
             return 0;
         }
-
         return ToDecimal(sum) / count;
     }
-
-
     static void DisplayAverage(decimal average)
     {
         Console.WriteLine($"Average: {average}");
     }
-
-
     static decimal ScoreToFraction(int score)
     {
         return ToDecimal(score) / 100;
     }
-
-
     // TASK 4
     static int AddBonus(int score)
     {
-        if (score > 80)
+        if (score > 80 && score <= 98)
         {
             return score + 2;
+        }else if(score == 99)
+        {
+            return score + 1;
         }
-
         return score;
     }
 }
